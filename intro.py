@@ -71,35 +71,39 @@ def is_prime (num):
 # for line in handle:
 # Do something
 # on home computer:
-text = open("/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt")
-text.read() # returns text
+# text = open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU')
+# text.read() # returns text
 # to find out what kind of object this is
-type(text) # returns <class '_io.TextIOWrapper'>  whatever that is ***
+# type(text) # returns <class '_io.TextIOWrapper'>  whatever that is ***
 # so I didn't open this correctly
-open("/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt") 
-# returned error, invalid syntax...so that doesn't work
-# online help: "You can read the file as a list of lines by simply calling list() on the file object:"
-# with open('goodlines.txt') as f:
-    # mylist = list(f)
-with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt') as f
-	quote = list(f)
-# error: invalid syntax
-# other online help:
-quote = text.readlines()
-type(quote) # returns ,class 'list'>
-len(quote) # returns 0
-quote # returns []
-# so that didn't work either.
-# Will: can you give me a clue here? 
-# following Will's hint and Paul's code:
-with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt') as quote:
-    linecount = 1
+# hours later, turns out that this text had no line breaks so nothing was working.
+# re-formatted the text file to have line breaks
+# following Will's hint and Paul's code and counseling:
+with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+    counter = 1
     for line in quote:
-    	print(line[1])
-    	print(line[3])
-    linecount+=1
-# this runs, but returns two 'e's, so there is a problem with lines in my quote and I don't know how to look at the
-# 'quote' object to see what it looks like or to know how many lines it has and where they occur.
+        print (counter," ", line)
+    counter+=1
+# above works
+# TIPS:
+# with 'open' command, always want to include a 'close' command too so it doesn't clog up python
+# text.close()
+# the 'with' command means with the file open, do this stuff and then close it
+# always be sure the text file is 'unix'
+# r = read only
+# U = universal (for opening difft text file types other than unix); accepts different line break symbols
+# now make this a list comprehension without the counter
+with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+    lines = [print(line) for line in quote]
+# above works
+# now for letter 5 in line 5 (with python counting); first without list comprehension
+with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+    counter = 1
+    for line in quote:
+    	if counter == 4
+            print (counter," ", line[4])
+        counter+=1
+# this gives a syntax error that I'm not understanding
 
 
     	
