@@ -91,6 +91,19 @@ len(quote) # returns 0
 quote # returns []
 # so that didn't work either.
 # Will: can you give me a clue here? 
+# following Will's hint and Paul's code:
+with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt') as quote:
+    linecount = 1
+    for line in quote:
+    	print(line[1])
+    	print(line[3])
+    linecount+=1
+# this runs, but returns two 'e's, so there is a problem with lines in my quote and I don't know how to look at the
+# 'quote' object to see what it looks like or to know how many lines it has and where they occur.
+
+
+    	
+
 	
 
 
