@@ -1,4 +1,6 @@
-from __future__ import print_function
+# from __future__ import print_function (if using Python 2
+# Office PC: /Users/A00017458/Dropbox/ProgrClass2016/python-introduction-karenmock
+# Home Mac: /Users/A00017458/Dropbox/ProgrClass2016/python-introduction-karenmock
 
 # Python Exercises 9.5
 # Q1 Write a loop that prints out the numbers from 20 to 10
@@ -42,15 +44,7 @@ for i in range(5-1,2,1):
 for i in range(2,5-1,1):
     print (i) # returns 2,3, not what we want
 for i in range(2-1,2,-1):
-    print (i) # doesn't return anything because range can't run
-# below doesn't work but not sure why; prints at each loop
-def primefun (num):
-    for i in range(num-1,2,-1): # from Marley's code, accounts for python counting, looping problem
-        if (num % i) == 0:
-            break
-            print (num, "is not a prime number")            
-        elif (num % i) != 0: 
-            print (num, "is prime")               
+    print (i) # doesn't return anything because range can't run      
 # Playing with Marley's code: this works
 def is_prime (num):
     for i in range(num-1, 2, -1):
@@ -62,11 +56,13 @@ def is_prime (num):
 	for i in range(num-1, 2, -1):
         if num % i == 0:
             return False
+        elif num == 4:
+            return False
     return True
 
 # Q6 Write a function that loads a text file, loops over the lines in it, and 
 # prints out the fifth character on the fifth line of that file.
-# �Hint� (really, frankly, this is the solution):
+# “Hint” (really, frankly, this is the solution):
 # with open("name_of_file") as handle:
 # for line in handle:
 # Do something
@@ -79,13 +75,15 @@ def is_prime (num):
 # hours later, turns out that this text had no line breaks so nothing was working.
 # re-formatted the text file to have line breaks
 # following Will's hint and Paul's code and counseling:
-with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+# Home Mac: with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+with open('/Users/A00017458/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
     counter = 1
     for line in quote:
-        print (counter," ", line)
-    counter+=1
+        if counter == 5:
+            print (counter," ", line[4])
+        counter+=1
 # above works
-# TIPS:
+# TIPS from Paul:
 # with 'open' command, always want to include a 'close' command too so it doesn't clog up python
 # text.close()
 # the 'with' command means with the file open, do this stuff and then close it
@@ -97,22 +95,69 @@ with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock
     lines = [print(line) for line in quote]
 # above works
 # now for letter 5 in line 5 (with python counting); first without list comprehension
-with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+# for home mac: with open('/Users/karenmock/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
+with open('/Users/A00017458/Dropbox/ProgrClass2016/python-introduction-karenmock/Adams_quote.txt', 'rU') as quote:
     counter = 1
     for line in quote:
-    	if counter == 4
+        if counter == 5:
             print (counter," ", line[4])
         counter+=1
-# this gives a syntax error that I'm not understanding
+# Works!
+
+# Q7 Write a loop that prints out the numbers from 1 to 20, printing “Good: NUMBER” if
+# the number is divisible by five and “Job: NUMBER” if then number is prime, and nothing otherwise.
+def is_prime (num): # re-run the is_prime function
+    for i in range(num-1, 2, -1):
+        if num % i == 0:
+            return False
+        elif num == 4:
+            return False #return statement breaks the loop whenever there is a 0
+    return True
+for i in range(1,20):
+    if i%5 == 0:
+        print (i, " Good: Number")
+    elif is_prime(i):
+        print (i, " Job: NUMBER")
+    else:
+        print (i)
+# Works!
+
+# Q8 A biologist is modelling population growth using a Gompertz curve, which is defined
+# as y(t) = a.e−b.e−c.t
+# where y is population size, t is time, a and b are parameters, and e is the
+# exponential function. Write them a function that calculates population size at any time
+# for any values of its parameters.
+def gomp(a,b,c,t):
+    import math
+    y = (a * math.exp(-b * math.exp(-c * t)))
+    return (y)   
+print (gomp(6,40,7,2))
+# Works!
+
+# Q9 Write a function that draws boxes of a specified width and height that 
+# looks like this (height 3, width 5):
+# *****
+# *   *
+# *****
+# (Hint: what does print("*" + "" + "*"*4) give you?)
+def box(h,w):
+    print ((("*" * w) + "\n") 
+    + ("*" + ((" ") * (w-2)) + ("*"  + "\n")) * (h-2)
+    + ("*" * w)) 
+box(8,9) 
+# Works! Did not make an error message for values <3
+def box(h,w):
+    if h > 2 and w > 2:
+        print ((("*" * w) + "\n") 
+        + ("*" + ((" ") * (w-2)) + ("*"  + "\n")) * (h-2)
+        + ("*" * w)) 
+    else:
+        print ("h and w should be > 2")
+box (6,10)
+box (3,3)
+box (2,3) 
+# Works!
 
 
-    	
-
-	
 
 
- 
-
-
-
-    
