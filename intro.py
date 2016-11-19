@@ -158,6 +158,37 @@ box (3,3)
 box (2,3) 
 # Works!
 
+# Q10 Implement a point class that holds x and y information for a point in space. 
+# Note that I am not asking you to plot that line.
+class Points:
+    def __init__(self, Xcoord, Ycoord):
+    	self.Xcoord, self.Ycoord = Xcoord, Ycoord
+Point1 = Points(5,6)
+# print(Point1.Ycoord)  # was not expecting to have to print this
+# print(dir(Point1))
+# Works!
+
+# Q 11 Write a distance method that calculates the distance between two points in space.
+# STUCK on this one...
+# class Points:
+#     def __init__(self, X, Y):
+#         self.X, self.Y = X, Y
+#     def dist(First, Second):  # need to make sure these are Points class?
+#         import math
+#         side1 = First.Y - Second.Y
+#         print(side1)
+#         side2  = First.X - Second.X
+#         print(side2)
+#         h = math.sqrt(side1**2 + side2**2)
+#         return h
+# P1 = Points(5,6)
+# P2 = Points(7,12)
+# dist(P1,P2) # need to have the command be xxx.dist...but the pair of points is not the object
+# gives error that dist is not defined
+# not sure whether to write a separate class with dependency on the Points class or just what.
+
+
+
 
 
 
